@@ -16,7 +16,7 @@ class Queue{
             back = -1;
         }
         ~Queue(){
-            delete vals;
+            delete[] vals;
         }
         void enqueue(int value){
             if(isFull()){
