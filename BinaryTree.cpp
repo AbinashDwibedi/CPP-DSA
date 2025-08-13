@@ -78,9 +78,45 @@ class BinaryTree{
             }
             return node;
         }
+    public:
+    BinaryTree() { root = nullptr; }
+
+    void insert(int value) { root = insert(root, value); }
+    void remove(int value) { root = remove(root, value); }
+    bool search(int key) { return search(root, key); }
+    void inorder() { inorder(root); std::cout << "\n"; }
+    void preorder() { preorder(root); std::cout << "\n"; }
+    void postorder() { postorder(root); std::cout << "\n"; }
+    int height() { return height(root); }
 };
 
 int main(){
+    BinaryTree tree;
 
+    tree.insert(50);
+    tree.insert(30);
+    tree.insert(70);
+    tree.insert(20);
+    tree.insert(40);
+    tree.insert(60);
+    tree.insert(80);
+
+    std::cout << "Inorder Traversal: ";
+    tree.inorder();   // 20 30 40 50 60 70 80
+
+    std::cout << "Preorder Traversal: ";
+    tree.preorder();  // 50 30 20 40 70 60 80
+
+    std::cout << "Postorder Traversal: ";
+    tree.postorder(); // 20 40 30 60 80 70 50
+
+    std::cout << "Height of Tree: " << tree.height() << "\n"; // 3
+
+    std::cout << "Searching 40: " << (tree.search(40) ? "Found\n" : "Not Found\n");
+    std::cout << "Searching 90: " << (tree.search(90) ? "Found\n" : "Not Found\n");
+
+    tree.remove(50);
+    std::cout << "After Deleting 50 (Inorder): ";
+    tree.inorder(); // 20 30 40 60 70 80
     return 0;
 }
